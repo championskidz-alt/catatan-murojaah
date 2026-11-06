@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+data/bootstrap-url.txt
+data/bootstrap-url.tmp
+data/log-tanya.log
+.env
+.env.*
