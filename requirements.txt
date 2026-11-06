@@ -1,0 +1,2 @@
+# Kosong dengan sengaja: seluruh aplikasi memakai pustaka bawaan
+# Python (http.server, json, hmac, hashlib). Tidak ada paket pihak ketiga.
