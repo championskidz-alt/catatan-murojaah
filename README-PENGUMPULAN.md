@@ -219,3 +219,43 @@ Dari catatan serah terima internal (Direktif #16 §5):
 
 Keputusan lisensi open source adalah hak pemilik proyek. Lisensi **sengaja
 belum ditempatkan** di paket ini.
+
+## Konfigurasi layanan AI — teruji pada uji paket bersih (6 Nov 2026)
+
+Uji alur dari hasil ekstraksi ZIP ini (7/7 lulus: bahan → Buat Catatan →
+catatan terbuka → muat ulang) berhasil dengan konfigurasi berikut:
+
+1. **Kunci layanan AI** dipasang oleh pengelola lewat halaman `/panel`
+   (form "Kunci" → `POST /panel/kunci`). Kunci diverifikasi ke provider saat
+   dipasang dan disimpan di toko runtime server (`data-rw/`, izin 0600),
+   tidak pernah masuk repo/log/URL. Alternatif env `CATATAN_AI_KEY` hanya
+   fallback platform; jalur panel adalah yang teruji.
+2. **ID model** wajib diset lewat `/panel` → form "ID model" (`POST /panel/konfig`)
+   dengan bentuk `provider/nama-model` yang DITERIMA provider untuk kunci Anda
+   (cek daftar model di dashboard provider). Bila model bawaan/bentuk salah,
+   server mengembalikan galat 400 yang jelas ("Invalid model name") — aplikasi
+   tetap menyimpan bahan dan menampilkan pesan jujur.
+3. Tanpa kunci: aplikasi tetap berjalan — bahan tersimpan lokal, dan semua
+   pembuatan hasil memberi pesan "layanan AI belum siap" tanpa mengarang isi.
+
+Tidak ada kredensial dalam paket ini.
+
+## Konfigurasi layanan AI — teruji pada uji paket bersih (6 Nov 2026)
+
+Uji alur dari hasil ekstraksi ZIP ini (7/7 lulus: bahan → Buat Catatan →
+catatan terbuka → muat ulang) berhasil dengan konfigurasi berikut:
+
+1. **Kunci layanan AI** dipasang oleh pengelola lewat halaman `/panel`
+   (form "Kunci" → `POST /panel/kunci`). Kunci diverifikasi ke provider saat
+   dipasang dan disimpan di toko runtime server (`data-rw/`, izin 0600),
+   tidak pernah masuk repo/log/URL. Alternatif env `CATATAN_AI_KEY` hanya
+   fallback platform; jalur panel adalah yang teruji.
+2. **ID model** wajib diset lewat `/panel` → form "ID model" (`POST /panel/konfig`)
+   dengan bentuk `provider/nama-model` yang DITERIMA provider untuk kunci Anda
+   (cek daftar model di dashboard provider). Bila model bawaan/bentuk salah,
+   server mengembalikan galat 400 yang jelas ("Invalid model name") — aplikasi
+   tetap menyimpan bahan dan menampilkan pesan jujur.
+3. Tanpa kunci: aplikasi tetap berjalan — bahan tersimpan lokal, dan semua
+   pembuatan hasil memberi pesan "layanan AI belum siap" tanpa mengarang isi.
+
+Tidak ada kredensial dalam paket ini.
